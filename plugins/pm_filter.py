@@ -1531,7 +1531,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         buttons = [[
                     InlineKeyboardButton('⭒ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ⭒', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
-                    InlineKeyboardButton('💸ᴇᴀʀɴ ᴍᴏɴᴇʏ', callback_data='short1'),
+                    InlineKeyboardButton('💸ᴇᴀʀɴ ᴍᴏɴᴇʏ', callback_data='short'),
                     InlineKeyboardButton('• ᴜᴘᴅᴀᴛᴇꜱ •', callback_data='about')
                 ],[
                     InlineKeyboardButton('• ᴄᴏᴍᴍᴀɴᴅꜱ •', callback_data='help'),
@@ -1551,67 +1551,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-        await query.answer(MSG_ALRT)
-
-        elif query.data == "short1":
-        buttons = [[
-            InlineKeyboardButton('1/3', callback_data='h'),
-            InlineKeyboardButton('ɴᴇxᴛ', callback_data='short1')
-        ],[
-            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋', callback_data='start')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        await query.message.edit_text(
-            text=script.SHORTLINK1,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        elif query.data == "short2":
-        buttons = [[
-            InlineKeyboardButton('ʙᴀᴄᴋ', callback_data='short2'),
-            InlineKeyboardButton('2/3', callback_data='h'),
-            InlineKeyboardButton('ɴᴇxᴛ', callback_data='short1')
-        ],[
-            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋', callback_data='start')
-        ]]
         
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        await query.message.edit_text(
-            text=script.SHORTLINK2,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-        elif query.data == "short3":
-        buttons = [[
-            InlineKeyboardButton('ʙᴀᴄᴋ', callback_data='short2')
-            InlineKeyboardButton('3/3', callback_data='h'),
-            InlineKeyboardButton('ɴᴇxᴛ', callback_data='short1')
-        ],[
-            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ᴛᴏ ʜᴏᴍᴇ ⇋', callback_data='start')
-        ]]
-        
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        await query.message.edit_text(
-            text=script.SSHORTLINK3,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-
     elif query.data == "filters":
         buttons = [[
             InlineKeyboardButton('ᴍᴀɴᴜᴀʟ ꜰɪʟᴛᴇʀ', callback_data='manuelfilter'),
@@ -1633,21 +1573,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
 
-    elif query.data == "global_filters":
-        buttons = [[
-            InlineKeyboardButton('⇋ ʙᴀᴄᴋ ⇋', callback_data='filters')
-        ]]
-        await client.edit_message_media(
-            query.message.chat.id, 
-            query.message.id, 
-            InputMediaPhoto(random.choice(PICS))
-        )
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text=script.GFILTER_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
     
     elif query.data == "help":
         buttons = [[
@@ -1918,7 +1843,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('ɴᴇxᴛ⪢', callback_data='7plan')
             ],[
             InlineKeyboardButton('⇌Bᴀᴄᴋ⇌', callback_data='start')
-        ]]kup = InlineKeyboardMarkup(buttons)
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text="■ □ □"
         )
